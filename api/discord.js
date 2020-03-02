@@ -80,7 +80,7 @@ router.get('/callback', catchAsync(async (req, res) => {
     con.query(sql, function (err, result) {
     if (err) throw err;
           console.log("1 record inserted");
-          res.redirect(`/home`);
+          res.redirect(`/dashboard`);
     });
  }));
 

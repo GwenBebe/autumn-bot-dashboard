@@ -26,10 +26,10 @@ function dashboardPage(props) {
         </div>
     </div>
     <div class="modules">
-        <div id="verification" data-guild={props.guild.id} class="module" id="verification" href={`/dashboard/${props.guild.id}/verification`}>
-            <img class="module-icon" src="/images/check.png"></img>
-            <span class="module-name">Verification</span>
-            <span class="module-description">Verify new users to protect against raids, bot accounts, and trolls.</span>
+        <div data-module="verification" data-guild={props.guild.id} class="module module-component" id="verification" href={`/dashboard/${props.guild.id}/verification`}>
+            <img data-module="verification" class="module-icon module-component" src="/images/check.png"></img>
+            <span data-module="verification" class="module-name module-component">Verification</span>
+            <span data-module="verification" class="module-description module-component">Verify new users to protect against raids, bot accounts, and trolls.</span>
         </div>
     </div>
     </DefaultLayout>

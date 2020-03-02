@@ -43,18 +43,12 @@ function DefaultLayout(props) {
                     <li class={(() => {if(props.page == "about"){ return 'nav-item active'}else{return 'nav-item'}})()}>
                         <a class="nav-link" href="/about">About</a>
                     </li>
+                            
                     <li class={(() => {if(props.page == "features"){ return 'nav-item active'}else{return 'nav-item'}})()}>
                         <a class="nav-link" href="/features">Features</a>
                     </li>
-                    <li class={(() => {if(props.page == "commands" || props.page == "tutorials"){ return 'nav-item dropdown active'}else{return 'nav-item dropdown'}})()}>
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Documentation
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/commands">Commands</a>
-                            <a class="dropdown-item" href="/tutorials">Tutorials</a>
-
-                        </div>
+                    <li class={(() => {if(props.page == "commands"){ return 'nav-item active'}else{return 'nav-item'}})()}>
+                        <a class="nav-link" href="/commands">Commands</a>
                     </li>
                     {(() => {
                         if(props.loggedIn){

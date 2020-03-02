@@ -1,28 +1,31 @@
 const express = require('express');
-const exphbs  = require('express-handlebars');
-const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser');
-const querystring = require('querystring');
+const cookieParser = require('cookie-parser');
 const fetch = require("node-fetch");
-const path = require('path');
-const http = require('http');
 const mysql = require('mysql');
 const expressip = require('express-ip');
 const { catchAsync } = require(__dirname + '/utils');
 const Discord = require('discord.js');
+const bodyParser = require('body-parser');
+const cors = require("cors")
+
 const client = new Discord.Client();
-const btoa = require('btoa');
-const puppeteer = require('puppeteer');
+
 const CLIENT_ID = '672548437346222110';
 const CLIENT_SECRET = '9Gw1yqL0qiELg9d7jYQ-IOpXkcw_o6jq';
 const BOT_TOKEN = "NjcyNTQ4NDM3MzQ2MjIyMTEw.XlqgFw.kmBSFsir4CYtj26HHuI7UeJySjc";
-client.login('NjcyNTQ4NDM3MzQ2MjIyMTEw.XlcMXg.LQQedtk5Jk8KVL0Q3z26997e4Zk');
+
+const SQL_HOST = "webserver3.pebblehost.com";
+const SQL_USER = "autumnfo_admin";
+const SQL_PASS = "9p4kd%DkOw96";
+const SQL_BASE = "autumnfo_discordbot";
+
+client.login(BOT_TOKEN);
 
 var con = mysql.createConnection({
-  host: "webserver3.pebblehost.com",
-  user: "autumnfo_admin",
-  password: "9p4kd%DkOw96",
-  database: "autumnfo_discordbot"
+  host: SQL_HOST,
+  user: SQL_USER,
+  password: SQL_PASS,
+  database: SQL_BASE
 });
 
 
@@ -37,8 +40,12 @@ var app = express();
 app.enable('trust proxy');
 
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(cors());
 // Routes
 app.use('/api/discord', require('./api/discord'));
 app.use('/api/dashboard', require('./api/dashboard'));
@@ -54,12 +61,32 @@ app.engine('jsx', require('express-react-views').createEngine());
 app.set('view engine', 'jsx');
 
 
+function escapeSpecialChars(jsonString) {
+  return jsonString
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r")
+    .replace(/\t/g, "\\t")
+    .replace(/\f/g, "\\f");
+
+}
+
 function getUserInfo(ip){
   return new Promise((resolve, reject) => {
     con.query(
       "SELECT * FROM dashboardlogins WHERE userIP = '" + ip + "' LIMIT 1", 
       (err, result) => {
         return err ? reject(err) : resolve(result[0]);
+      })
+  })
+}
+
+async function getGuildInfo(id)
+{
+  return new Promise((resolve, reject) => {
+    con.query(
+      "SELECT * FROM guildsettings WHERE Guild = '" + id + "' LIMIT 1", 
+      (err, result) => {
+        return err ? reject(err) : resolve(result);
       })
   })
 }
@@ -159,9 +186,18 @@ app.get('/dashboard/:guildID', catchAsync( async (req, res) => {
 app.get('/dashboard/:guildID/:module', catchAsync( async (req, res) => {
   console.log(req.params.guildID);
   console.log(req.params.module);
-  var accessToken = getAccessToken(req);
+  var accessToken = await getAccessToken(req);
 
   if(accessToken){
+    const response = await fetch(`http://discordapp.com/api/users/@me`,
+    {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+    });
+    const userInfo = await response.json();
+
     const guildResponse = await fetch(`http://discordapp.com/api/guilds/${req.params.guildID}`,
     {
         method: 'GET',
@@ -170,15 +206,39 @@ app.get('/dashboard/:guildID/:module', catchAsync( async (req, res) => {
         },
     });
     const guild = await guildResponse.json();
-    console.log(guild);
-    res.render('verify-module', {
-      loggedIn: true,
-      username: userInfo.username,
-      tag: userInfo.discriminator,
-      guild: guild,
-      host: req.get('host'),
-      protocol: req.protocol,
-    })
+
+    var guildInfo = await getGuildInfo(req.params.guildID);
+    
+    if(guildInfo[0]){
+      const channelsResponse = await fetch(`http://discordapp.com/api/guilds/${req.params.guildID}/channels`,
+      {
+          method: 'GET',
+          headers: {
+          Authorization: `Bot ${BOT_TOKEN}`,
+          },
+      });
+      const channels = await channelsResponse.json();
+      
+      console.log(channels);
+      if(req.params.module == "verification")
+      {
+        var VerifyModule = JSON.parse(escapeSpecialChars(guildInfo[0].VerifyModule));
+    
+
+        res.render('verify-module', {
+          loggedIn: true,
+          username: userInfo.username,
+          tag: userInfo.discriminator,
+          moduleSettings: VerifyModule,
+          guild: guild,
+          channels: channels,
+          host: req.get('host'),
+          protocol: req.protocol,
+        })
+      }
+    }else{
+      res.redirect('/dashboard')
+    }
   }else{
     res.redirect('/login')
   }

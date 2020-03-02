@@ -1,0 +1,421 @@
+#mobile{
+    display: none;
+}
+
+html, body
+{
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+    background-color: rgb(43, 41, 41);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    border-top: 6px #f13128 solid !important;
+    font-size: 16px;
+}
+a {
+    color: black;
+}
+.nav-link {
+     font-size: 14px !important;
+ }
+
+.navbar {
+    box-shadow: none !important
+}
+
+.navbar-brand {
+    font-size: 25px !important
+}
+
+.btn {
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: #f13128 !important
+}
+.btn-secondary {
+    background-color: #3b3b3a !important
+}
+
+.login{
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+}
+
+.error{
+    color: #fff !important;
+    background-image: none !important;
+    background-position: bottom !important;
+    background-size: 200% !important;
+    background-repeat: no-repeat !important;
+    height: 100%
+}
+
+.heading {
+    padding: 80px 50px 160px !important;
+    color: #fff !important;
+    background-image: url("../images/background.svg") !important;
+    background-position: right 50% bottom -1px !important;
+    background-size: 200% !important;
+    background-repeat: no-repeat !important;
+}
+
+.page{
+    padding: 0px 50px 100px!important;
+    color: #fff !important;
+    background-image: url("../images/background.svg") !important;
+    background-position: bottom !important;
+    background-size: 200% !important;
+    background-repeat: no-repeat !important;
+}
+.title {
+    line-height: 90px !important;
+    margin-bottom: -2px !important;
+    font-size: 36px !important
+}
+
+.header {
+    line-height: 90px !important;
+    margin-bottom: -2px !important;
+    font-size: 45px !important;
+    color: #d62e25;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.61) !important;
+    font-size: 16px !important;
+}
+
+.features {
+    text-align: center !important;
+    background: #f13128 !important;
+}
+.features .title {
+    font-size: 40px !important;
+    color: #ffffff !important;
+    line-height: 70px !important;
+}
+
+.features .subtitle {
+    font-size: 20px !important;
+    color: #a2a8bd;
+}
+
+.cards {
+    margin-top: 30px !important;
+}
+
+.card {
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    margin: 0px 2px;
+}
+
+.card-title {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #f13128 !important;
+}
+
+.about{
+    background: #f13128 !important;
+    padding: 60px 25% !important
+}
+.about .title {
+    font-size: 40px !important;
+    color: #ffffff !important;
+    line-height: 70px !important;
+}
+
+.about .subtitle {
+    font-size: 20px !important;
+    color: #a2a8bd;
+}
+
+.statistics {
+    background-color: rgb(43, 41, 41) !important;
+    text-align: center !important;
+    padding: 20px 20px !important;
+}
+
+.statistics .title {
+    font-size: 40px !important;
+    color: #ffffff !important;
+    line-height: 70px !important;
+}
+
+.statistics .subtitle {
+    font-size: 20px !important;
+    color: #a2a8bd;
+}
+
+.card.statistic {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #f7f7f7 !important;
+}
+
+.start {
+    text-align: center !important;
+    background: #f13128 !important;
+    padding: 60px 50px !important
+}
+
+.start .card {
+    background: rgba(255, 255, 255, 0.83) !important;
+    color: #353e4c !important;
+}
+
+.start .card .subtitle {
+    color: rgba(53, 62, 76, 0.6) !important;
+    font-size: 16px !important;
+}
+
+.footer {
+    text-align: center !important;
+    background: #353e4c !important;
+    padding: 5px 6px !important;
+    color: #ecf2ff;
+    font-size: 14px !important;
+}
+
+.footer a {
+    color: #6086f6 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+}
+
+.guilds{
+    padding: 10px 30%;
+}
+
+.guild{
+    width: 100%;
+    color: white;
+    list-style:none;
+    padding: 5px 0px;
+    display: flex;
+    vertical-align: middle;
+}
+
+.guild-icon {
+    flex-shrink: 0;
+
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    font-weight: 500;
+    line-height: 1.2em;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.guild-noicon{
+    background-color: #36393f;
+}
+
+.guild-icon span{
+    display: inline-block;
+    padding: 15px 0px 15px;
+}
+
+.guild-name{
+    padding: 15px 15px;
+    font-size: 30px;
+    vertical-align: middle;
+    padding: 15px 15px;
+    font-size: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.guild-element{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#servers{
+    text-transform: uppercase;
+    color: white;
+    list-style:none;
+    padding: 5px 10px;
+    margin: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+}
+
+#servers span{
+    padding: 5px 0px;
+}
+
+.dashboard-btn{
+    flex-shrink: 0;
+    margin-left: auto !important;
+    padding: 12px 12px !important;
+    font-size: 13px !important;
+}
+
+.modules{
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 20%;
+    width: 100%;
+
+}
+
+.module{
+    text-align: left;
+    display: inline-block;
+    width: 375px;
+    height: 125px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #464646;
+    position: relative;
+}
+
+.module-name{
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    bottom: 38%;
+    padding: 15px 10px;
+    font-weight: 600;
+}
+
+.module-description{
+    color: rgb(185, 185, 185);
+    position: absolute;
+    padding: 5px 5px 5px 10px;
+    width: 290px;
+    bottom: 14%;
+}
+
+.module-icon{
+    height: 50px;
+    width: 50px;
+    margin: 22px 5px 42px 20px;
+}
+
+.page-title-item{
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff !important;
+    text-align: center;
+    border-right: 1px solid white;
+    margin: 0px 15px 0px 0px;
+}
+
+.page-title{
+    padding: 8px 15px 8px 0px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.page-title:hover{
+    text-decoration: none;
+}
+
+#loginMobile{
+    display: none;
+}
+
+.navbar-toggler-bar{
+    background-color: #fff;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-button {
+  width: 25px;
+  height: 25px;
+}
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+#wip{
+    color: rgb(119, 119, 119);
+    padding: 0px 3px;
+}
+
+@media screen and (max-width: 991px) {
+    #loginMobile{
+        display: initial;
+    }
+
+    #loginDesktop{
+        display: none;
+    }
+
+    .page-title-item{
+        font-size: 40px;
+        line-height: 26px;
+        color: #fff !important;
+        text-align: center;
+        border-bottom: 1px solid white;
+        border-right: 0px solid white;
+        margin: 20px 0px 20px 0px;
+    }
+
+    .page-title{
+        padding: 20px 15px 20px 15px;
+        vertical-align: middle;
+        text-decoration: none;
+    }
+
+    .guilds{
+        padding: 30px 3%;
+    }
+
+    .modules{
+        padding: 2px;
+    }
+}

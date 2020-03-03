@@ -209,6 +209,7 @@ a {
     padding: 5px 0px;
     display: flex;
     vertical-align: middle;
+    align-items: middle;
 }
 
 .guild-icon {
@@ -241,10 +242,10 @@ a {
 }
 
 .guild-name{
-    padding: 15px 15px;
     font-size: 30px;
     vertical-align: middle;
     padding: 15px 15px;
+    margin-bottom: 0px !important;
     font-size: 15px;
     display: inline-block;
     vertical-align: middle;
@@ -286,6 +287,7 @@ a {
 }
 
 .module{
+    cursor: pointer;
     text-align: left;
     display: inline-block;
     width: 375px;
@@ -295,21 +297,27 @@ a {
     border-radius: 3px;
     background-color: #464646;
     position: relative;
+    box-shadow: 3px 3px 8px  #000000;
+}
+
+.module-title{
+    color: white;
+    margin: 0;
 }
 
 .module-name{
     color: white;
     font-size: 25px;
     position: absolute;
-    bottom: 38%;
-    padding: 15px 10px;
+    bottom: 40%;
+    padding: 15px 15px;
     font-weight: 600;
 }
 
 .module-description{
     color: rgb(185, 185, 185);
     position: absolute;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 15px;
     width: 290px;
     bottom: 14%;
 }
@@ -329,6 +337,10 @@ a {
     margin: 0px 15px 0px 0px;
 }
 
+.module-guild{
+    padding: 0px 20%;
+}
+
 .page-title{
     padding: 8px 15px 8px 0px;
     display: inline-block;
@@ -340,8 +352,8 @@ a {
     text-decoration: none;
 }
 
-#loginMobile{
-    display: none;
+.textarea{
+    height: 50px;
 }
 
 .navbar-toggler-bar{
@@ -386,6 +398,12 @@ a {
     padding: 0px 3px;
 }
 
+.response{
+    color: white;
+    text-align: left;
+    padding-right: 10px;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -426,11 +444,11 @@ a {
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #f13128;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #f13128;
   }
   
   input:checked + .slider:before {
@@ -447,8 +465,162 @@ a {
   .slider.round:before {
     border-radius: 50%;
   }
-  
+
+  .settings{
+    background-color: #202020;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+  }
+
+  .submit-btn{
+    width: 100%;
+    text-align: right;
+  }
+
+  .custom-select{
+      color: white;
+      background-color: rgb(83, 83, 83)!important;
+      margin-bottom: 15px !important;
+  }
+
+  .submit-btn input{
+    display: inline-block !important;
+  }
+
+  .settings, .settings-head, .modules-head{
+    margin: 2px 20% 2px 20%;
+  }
+
+  .settings-head, .modules-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+  }
+
+  .modules-head{
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+  }
+
+  .settings-head h1{
+    vertical-align: middle;
+  }
+
+  .switch{
+    margin: 0 !important;
+  }
+
+textarea.form-control {
+    color: white !important;
+    background-color: rgb(83, 83, 83)!important;
+    height: auto !important;
+	-webkit-transition: background-color 1s ease, color 1s ease;
+	-moz-transition: background-color 1s ease, color 1s ease;
+	-o-transition: background-color 1s ease, color 1s ease;
+	-ms-transition: background-color 1s ease, color 1s ease;
+	transition: background-color 1s ease, color 1s ease;
+}
+
+textarea:disabled{
+    color: #6c757d !important;
+    cursor: default !important;
+    background-color: rgb(54, 54, 54)!important;
+}
+
+select:disabled{
+    color: #6c757d !important;
+    cursor: default !important;
+    background-color: rgb(54, 54, 54)!important;
+}
+
+select{
+	-webkit-transition: background-color 1s ease, color 1s ease;
+	-moz-transition: background-color 1s ease, color 1s ease;
+	-o-transition: background-color 1s ease, color 1s ease;
+	-ms-transition: background-color 1s ease, color 1s ease;
+	transition: background-color 1s ease, color 1s ease;
+}
+
+label{
+	-webkit-transition: background-color 1s ease, color 1s ease;
+	-moz-transition: background-color 1s ease, color 1s ease;
+	-o-transition: background-color 1s ease, color 1s ease;
+	-ms-transition: background-color 1s ease, color 1s ease;
+	transition: background-color 1s ease, color 1s ease;
+}
+
+.form-control {
+    display: block !important;
+    width: 100% !important;
+    height: calc(1.5em + .75rem + 2px) !important;
+    padding: .375rem .75rem !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: .25rem !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box !important;
+}
+label {
+    color: white;
+    display: inline-block !important;
+    margin-bottom: .5rem !important;
+    font-size: 1rem !important;
+}
+
+textarea {
+    overflow: auto !important;
+    resize: vertical !important;
+}
+
+#loginMobile{
+    display: none;
+}
 @media screen and (max-width: 991px) {
+
+    #loginDesktop{
+        display: none;
+    }
+
+    .page-title-item{
+        font-size: 40px;
+        line-height: 26px;
+        color: #fff !important;
+        text-align: center;
+        border-bottom: 1px solid white;
+        border-right: 0px solid white;
+        margin: 20px 0px 20px 0px;
+    }
+
+    .page-title{
+        padding: 20px 15px 20px 15px;
+        vertical-align: middle;
+        text-decoration: none;
+    }
+
+    .guilds{
+        padding: 30px 3%;
+    }
+
+    .modules{
+        padding: 2px;
+    }
     #loginMobile{
         display: initial;
     }
@@ -479,5 +651,13 @@ a {
 
     .modules{
         padding: 2px;
+    }
+
+    .module-guild{
+        padding: 0px;
+    }
+
+    .settings, .settings-head, .modules-head{
+      margin: 2px 0 2px 0;
     }
 }

@@ -4,19 +4,7 @@ const btoa = require('btoa');
 const { catchAsync } = require('../utils');
 const cookieParser = require('cookie-parser');
 const requestIp = require('request-ip');
-const mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "webserver3.pebblehost.com",
-  user: "autumnfo_admin",
-  password: "9p4kd%DkOw96",
-  database: "autumnfo_discordbot"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected to database: Discord Login Api")
-});
+var con = require(__dirname + '/../db.js');
 const router = express.Router();
 const app = express();
 

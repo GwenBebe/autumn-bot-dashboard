@@ -155,6 +155,8 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
 
             let oldNonVerifiedRole = guild.roles.get(oldGuildInfo.NonVerifiedRole);
 
+            let oldNonVerifyChan = guild.roles.get(oldGuildInfo.VerifyChannel);
+
             if(oldStaffRole){
                 modChan.overwritePermissions(oldStaffRole.id, {
                     VIEW_CHANNEL: null,
@@ -172,19 +174,10 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
                           VIEW_CHANNEL: null,
                         });
                     }
-
-                    channel.overwritePermissions(guild.defaultRole.id, {
-                      VIEW_CHANNEL: null,
-                    });
         
                     if(channel.id != verifyModuleOBJ.VerifyChannel){channel.overwritePermissions(verifyModuleOBJ.NonVerifiedRole, {
                       VIEW_CHANNEL: false,
                     })}
-                    
-        
-                    channel.overwritePermissions(verifyModuleOBJ.NonVerifiedRole, {
-                      VIEW_CHANNEL: false,
-                    });
 
                     console.log("Updated " + channel.name)
                 }
@@ -203,12 +196,6 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
 
             verifyChan.overwritePermissions(guild.defaultRole.id, {
                 VIEW_CHANNEL: false,
-            });
-
-            verifyChan.overwritePermissions(verifyModuleOBJ.NonVerifiedRole, {
-                VIEW_CHANNEL: true,
-                SEND_MESSAGES: true,
-                READ_MESAGES: true
             });
 
 

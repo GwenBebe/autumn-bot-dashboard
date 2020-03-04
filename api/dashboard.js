@@ -198,6 +198,16 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
                 VIEW_CHANNEL: false,
             });
 
+            verifyChan.overwritePermissions(guild.defaultRole.id, {
+                VIEW_CHANNEL: false,
+            });
+
+            verifyChan.overwritePermissions(verifyModuleOBJ.NonVerifiedRole, {
+                VIEW_CHANNEL: true,
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true,
+            });
+
 
             console.log("GuildID: " + guildID);
 

@@ -200,8 +200,7 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
 
             verifyChan.overwritePermissions(verifyModuleOBJ.NonVerifiedRole, {
                 VIEW_CHANNEL: true,
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true,
+                SEND_MESSAGES: true
             });
 
 

@@ -4,7 +4,7 @@ var DefaultLayout = require('./layouts/default');
 function AboutPage(props) {
     return (
         <DefaultLayout page="commands" loggedIn={props.loggedIn} username={props.username} tag={props.tag} dirname={props.host} protocol={props.protocol}>
-            <div class="commands-head text-center">
+            <div class="basic-head text-center">
                 <h1 class="header title">Commands</h1>
                 <br />
             </div>

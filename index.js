@@ -112,12 +112,12 @@ app.get('/logout', (req, res) => {
 })
 
 app.get('/close-popup*', (req, res) => {
-    res.render('close-popup')
-})
-/*
+        res.render('close-popup')
+    })
+    /*
 
-*/
-app.get('/dashboard/:guildID', catchAsync(async (req, res) => {
+    */
+app.get('/dashboard/:guildID', catchAsync(async(req, res) => {
     const accessToken = await getAccessToken(req);
 
     if (accessToken) {
@@ -154,7 +154,7 @@ app.get('/dashboard/:guildID', catchAsync(async (req, res) => {
     }
 }))
 
-app.get('/dashboard/:guildID/:module', catchAsync(async (req, res) => {
+app.get('/dashboard/:guildID/:module', catchAsync(async(req, res) => {
     var accessToken = await getAccessToken(req);
 
     if (accessToken) {
@@ -213,7 +213,7 @@ app.get('/dashboard/:guildID/:module', catchAsync(async (req, res) => {
     }
 }))
 
-app.get('/about', catchAsync(async (req, res) => {
+app.get('/about', catchAsync(async(req, res) => {
     const accessToken = await getAccessToken(req);
 
     if (accessToken) {
@@ -242,7 +242,35 @@ app.get('/about', catchAsync(async (req, res) => {
     }
 }))
 
-app.get('/commands', catchAsync(async (req, res) => {
+app.get('/features', catchAsync(async(req, res) => {
+    const accessToken = await getAccessToken(req);
+
+    if (accessToken) {
+
+        const response = await fetch(`http://discordapp.com/api/users/@me`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        const userInfo = await response.json()
+        res.render('features', {
+            loggedIn: true,
+            username: userInfo.username,
+            tag: userInfo.discriminator,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    } else {
+        res.render('features', {
+            loggedIn: false,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    }
+}))
+
+app.get('/commands', catchAsync(async(req, res) => {
     const accessToken = await getAccessToken(req);
 
     if (accessToken) {
@@ -270,7 +298,7 @@ app.get('/commands', catchAsync(async (req, res) => {
     }
 }))
 
-app.get('/dashboard', catchAsync(async (req, res) => {
+app.get('/dashboard', catchAsync(async(req, res) => {
     const accessToken = await getAccessToken(req)
 
     if (accessToken) {
@@ -331,15 +359,15 @@ app.get('/dashboard', catchAsync(async (req, res) => {
     }
 }));
 
-app.get('/invite-bot', catchAsync(async (req, res) => {
+app.get('/invite-bot', catchAsync(async(req, res) => {
     res.redirect('https://discordapp.com/api/oauth2/authorize?client_id=672548437346222110&permissions=8&redirect_uri=http%3A%2F%2Fwww.autumnbot.net%2Fhome&scope=bot');
 }));
 
-app.get('/support', catchAsync(async (req, res) => {
+app.get('/support', catchAsync(async(req, res) => {
     res.redirect('https://discord.gg/DfByvyN');
 }));
 
-app.get('/home', catchAsync(async (req, res) => {
+app.get('/home', catchAsync(async(req, res) => {
     const accessToken = await getAccessToken(req);
 
     if (accessToken) {

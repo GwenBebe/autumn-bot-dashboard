@@ -290,7 +290,7 @@ a {
     cursor: pointer;
     text-align: left;
     display: inline-block;
-    width: 375px;
+    width: 350px;
     height: 125px;
     padding: 5px;
     margin: 5px;
@@ -470,7 +470,7 @@ a {
     background-color: #202020;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid white;
+    border: 5px solid rgb(99, 99, 99);
   }
 
   .submit-btn{
@@ -479,10 +479,13 @@ a {
   }
 
   .custom-select{
+      border: 1px solid rgb(99, 99, 99) !important;
       color: white;
       background-color: rgb(83, 83, 83)!important;
       margin-bottom: 15px !important;
   }
+
+
 
   .submit-btn input{
     display: inline-block !important;
@@ -513,6 +516,7 @@ a {
   }
 
 textarea.form-control {
+    border: 1px solid rgb(99, 99, 99) !important;
     color: white !important;
     background-color: rgb(83, 83, 83)!important;
     height: auto !important;
@@ -657,7 +661,11 @@ textarea {
         padding: 0px;
     }
 
-    .settings, .settings-head, .modules-head{
-      margin: 2px 0 2px 0;
+    .settings-head, .modules-head, .modules-head, .module-guild{
+        margin: 2px 10px 2px 10px;
+    }
+
+    .settings{
+        margin: 2px 15px 15px 15px;
     }
 }

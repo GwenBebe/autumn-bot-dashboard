@@ -286,6 +286,34 @@ a {
 
 }
 
+.media{
+    padding: 35px 0px;
+}
+
+.media-body h1, h2, h3, h4, h5{
+    font-size: 30px !important;
+}
+
+.media-body{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+.media img{
+    min-height: 175px;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.features-page{
+    color: white;
+    text-align: left;
+    padding: 0px 25%;
+    width: 100%;
+
+}
+
 .module{
     cursor: pointer;
     text-align: left;
@@ -653,7 +681,7 @@ textarea {
         padding: 30px 3%;
     }
 
-    .modules{
+    .modules, .features-page{
         padding: 2px;
     }
 

@@ -242,6 +242,34 @@ app.get('/about', catchAsync(async (req, res) => {
     }
 }))
 
+app.get('/features', catchAsync(async (req, res) => {
+    const accessToken = await getAccessToken(req);
+
+    if (accessToken) {
+
+        const response = await fetch(`http://discordapp.com/api/users/@me`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        const userInfo = await response.json()
+        res.render('features', {
+            loggedIn: true,
+            username: userInfo.username,
+            tag: userInfo.discriminator,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    } else {
+        res.render('features', {
+            loggedIn: false,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    }
+}))
+
 app.get('/dashboard', catchAsync(async (req, res) => {
     const accessToken = await getAccessToken(req)
 

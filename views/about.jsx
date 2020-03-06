@@ -4,9 +4,9 @@ var DefaultLayout = require('./layouts/default');
 function AboutPage(props) {
   return (
     <DefaultLayout page="about" loggedIn={props.loggedIn} username={props.username} tag={props.tag} dirname={props.host} protocol={props.protocol}>      
-<div class="page text-center">
+<div class="basic-header text-center">
     <h1 class="header title">About Autumn Bot</h1>
-    <br /><br /><br /><br /><br /><br />
+    <br />
 </div>
 <div class="about text-left">
     <h1 class="display-5 title">What is Autumn Bot?</h1>

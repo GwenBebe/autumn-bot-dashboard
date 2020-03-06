@@ -17,17 +17,17 @@ function AboutPage(props) {
                         <article class="command">
                             <h1>hug</h1>
                             <p>Hug someone</p>
-                            <span className="mono">-hug {'{'}user{'}'}</span>
+                            <div className="mono">-hug {'{'}user{'}'}</div>
                         </article>
                         <article class="command">
                             <h1>poke</h1>
                             <p>Poke someone</p>
-                            <span className="mono">-poke {'{'}user{'}'}</span>
+                            <div className="mono">-poke {'{'}user{'}'}</div>
                         </article>
                         <article class="command">
                             <h1>pat</h1>
                             <p>Pat someone's head</p>
-                            <span className="mono">-pat {'{'}user{'}'}</span>
+                            <div className="mono">-pat {'{'}user{'}'}</div>
                         </article>
                     </section>
                 </section>
@@ -39,12 +39,12 @@ function AboutPage(props) {
                         <article class="command">
                             <h1>help</h1>
                             <p>Get the link to this page</p>
-                            <span className="mono">-help</span>
+                            <div className="mono">-help</div>
                         </article>
                         <article class="command">
                             <h1>news</h1>
                             <p>Get the most recent news regarding Autumn Bot</p>
-                            <span className="mono">-news</span>
+                            <div className="mono">-news</div>
                         </article>
                     </section>
                 </section>
@@ -56,12 +56,12 @@ function AboutPage(props) {
                         <article class="command">
                             <h1>embed</h1>
                             <p>Create a custom embed</p>
-                            <span className="mono">-embed {'{'}channel <span class="dark">WHEN MAKING NEW EMBED</span>{'}'} {'{'}title{'}'} {'{'}description{'}'} {'{'}color{'}'} {'{'}messageID <span class="dark">WHEN EDITING EMBED</span>{'}'} </span>
+                            <div className="mono">-embed {'{'}channel <span class="dark">WHEN MAKING NEW EMBED</span>{'}'} {'{'}title{'}'} {'{'}description{'}'} {'{'}color{'}'} {'{'}messageID <span class="dark">WHEN EDITING EMBED</span>{'}'} </div>
                         </article>
                         <article class="command">
                             <h1>news</h1>
                             <p>Get the most recent news regarding Autumn Bot</p>
-                            <span className="mono">-news</span>
+                            <div className="mono">-news</div>
                         </article>
                     </section>
                 </section>

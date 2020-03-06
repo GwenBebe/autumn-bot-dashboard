@@ -20,8 +20,8 @@ body {
     font-size: 16px;
 }
 
-a {
-    color: black;
+.subtitle a {
+    color: #d62e25 !important;
 }
 
 .nav-link {
@@ -136,8 +136,7 @@ a {
 }
 
 .about {
-    background: #f13128 !important;
-    padding: 60px 25% !important
+    padding: 2px 25% !important
 }
 
 .about .title {
@@ -770,18 +769,38 @@ textarea {
         padding: 30px 3%;
     }
     .modules,
-    .features-page {
+    .features-page{
         padding: 2px;
     }
+    
     .module-guild {
         padding: 0px;
     }
     .settings-head,
     .modules-head,
-    .module-guild {
+    .module-guild,
+    .basic-head {
         margin: 2px 10px 2px 10px;
     }
-    .settings {
+    .settings, .commands {
         margin: 2px 15px 15px 15px;
+    }
+
+    .features-page {
+        padding: 0px 3px;
+    }
+
+    .media {
+        padding: 35px 5px;
+        display: inline-block;
+    }
+    
+    .media img{
+        height: auto;
+        width: 100%;
+    }
+
+    .media .media-body{
+        padding: 10px 0px;
     }
 }

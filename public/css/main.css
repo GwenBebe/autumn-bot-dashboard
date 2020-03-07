@@ -16,9 +16,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    border-top: 6px #f13128 solid !important;
+    border-top: 6px #f13128 solid;
     font-size: 16px;
 }
+
+
 
 .subtitle a {
     color: #d62e25 !important;
@@ -279,6 +281,21 @@ body {
     padding: 5px 0px;
 }
 
+.edit-pfp-btn {
+    flex-shrink: 0;
+    margin-right: auto !important;
+    padding: 12px 12px !important;
+    font-size: 13px !important;
+    background-color: rgb(161, 41, 101) !important;
+}
+
+.placeholder {
+    flex-shrink: 0;
+    margin-right: auto !important;
+    padding: 12px 12px !important;
+    font-size: 13px !important;
+}
+
 .dashboard-btn {
     flex-shrink: 0;
     margin-left: auto !important;
@@ -519,9 +536,10 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-.settings {
+.card-large {
     background-color: #202020;
     padding: 10px;
+    color: white;
     border-radius: 5px;
     border: 5px solid rgb(99, 99, 99);
 }
@@ -542,10 +560,55 @@ input:checked+.slider:before {
     display: inline-block !important;
 }
 
+input {
+    border: 1px solid rgb(99, 99, 99) !important;
+}
+
+.jscolor {
+    display: block;
+    height: calc(1.5em + .75rem + 2px) !important;
+    padding-left: 10px;
+    border-radius: .25rem !important;
+}
+
 .settings,
 .settings-head,
 .modules-head {
     margin: 2px 20% 2px 20%;
+}
+
+.profile{
+    margin: 2px 30% 2px 30%;
+}
+
+#bio{
+    font-size: 20px !important;
+    padding-top: 10px;
+}
+
+.profile h6{
+    color: rgba(235, 235, 235, 0.863) !important;
+}
+
+.profile-user{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+#username {
+    margin: 0px !important;
+    padding-right: 25px !important;
+}
+
+#profilePicture {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 25px;
+    border: 3px solid white;
 }
 
 .settings-head,
@@ -570,7 +633,7 @@ input:checked+.slider:before {
 }
 
 textarea.form-control {
-    border: 1px solid rgb(99, 99, 99) !important;
+    border: 1px solid rgb(99, 99, 99);
     color: white !important;
     background-color: rgb(83, 83, 83)!important;
     height: auto !important;
@@ -609,6 +672,10 @@ label {
     transition: background-color 1s ease, color 1s ease;
 }
 
+.invalid-form{
+    border-color: rgb(220, 53, 69) !important;
+}
+
 .form-control {
     display: block !important;
     width: 100% !important;
@@ -617,10 +684,10 @@ label {
     font-size: 1rem !important;
     font-weight: 400 !important;
     line-height: 1.5 !important;
-    color: #495057 !important;
-    background-color: #fff !important;
+    border: 1px solid rgb(99, 99, 99);
+    color: white !important;
+    background-color: rgb(83, 83, 83)!important;
     background-clip: padding-box !important;
-    border: 1px solid #ced4da !important;
     border-radius: .25rem !important;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
 }
@@ -674,7 +741,7 @@ textarea {
     margin-bottom: 10px;
 }
 
-.mono .dark {
+.dark {
     color: rgba(235, 235, 235, 0.863) !important;
 }
 
@@ -683,13 +750,6 @@ textarea {
     margin: 2px 20% 2px 20%;
 }
 
-.commands-class {
-    background-color: #202020;
-    padding: 0px 15px;
-    margin-bottom: 50px;
-    border-radius: 5px;
-    border: 5px solid rgb(99, 99, 99);
-}
 
 .commands-class-name {
     font-weight: 750 !important;

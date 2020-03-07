@@ -11,6 +11,46 @@ const app = express();
 const CLIENT_ID = '672548437346222110';
 const CLIENT_SECRET = '9Gw1yqL0qiELg9d7jYQ-IOpXkcw_o6jq';
 
+async function getProfile(userID) {
+  return new Promise((resolve, reject) => {
+      con.query(
+          "SELECT * FROM profiles WHERE userID = '" + userID + "' LIMIT 1",
+          (err, result) => {
+              return err ? reject(err) : resolve(result[0]);
+          })
+  })
+}
+
+async function getUserInfo(ip) {
+    return new Promise((resolve, reject) => {
+        con.query(
+            "SELECT * FROM dashboardlogins WHERE userIP = '" + ip + "' LIMIT 1",
+            (err, result) => {
+                return err ? reject(err) : resolve(result[0]);
+            })
+    })
+}
+
+async function getAccessToken(req) {
+    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+
+    const loginInfo = await getUserInfo(ip);
+
+    if (loginInfo) {
+        var accessToken = loginInfo.accessToken;
+        var tokenExpire = loginInfo.tokenExpire;
+
+        if (tokenExpire < Date.now()) {
+            deleteUserInfo(ip);
+            return undefined;
+        } else {
+            return accessToken;
+        }
+    } else {
+        return undefined;
+    }
+}
+
 app.use(cookieParser());
 router.use(requestIp.mw());
 
@@ -28,6 +68,7 @@ router.get('/callback/invite', catchAsync(async (req, res) => {
 }));
 
 router.get('/logout', (req, res) => {
+  var backURL = req.header('Referer') || '/';
   const ip = req.clientIp;
 
   var sql = `DELETE FROM dashboardlogins WHERE userIP = '${ip}'`;
@@ -36,12 +77,16 @@ router.get('/logout', (req, res) => {
     console.log("Number of records deleted: " + result.affectedRows);
   });
 
-  res.redirect('/');
+  res.redirect(backURL);
 })
 
 router.get('/callback', catchAsync(async (req, res) => {
     console.log(req.query);
-    if (!req.query.code) throw new Error('NoCodeProvided');
+    if (!req.query.code)
+    {
+      res.redirect('/home');
+      throw new Error('NoCodeProvided');
+    }
     var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
     const code = req.query.code;
@@ -63,13 +108,30 @@ router.get('/callback', catchAsync(async (req, res) => {
       });
     const userInfo = await response1.json();
 
-    var sql = `INSERT INTO dashboardlogins (userIP, accessToken, tokenExpire) VALUES ('${ip}', '${json.access_token}', ${Date.now() + 604800000})`;
+    var profile = await getProfile(userInfo.id);
 
-    con.query(sql, function (err, result) {
-    if (err) throw err;
-          console.log("1 record inserted");
-          res.redirect(`/dashboard`);
-    });
+    if(!profile)
+    {
+      var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}','{"userID":"${userInfo.id}","username":"${userInfo.username}","tag":"${userInfo.discriminator}","avatar":"${userInfo.avatar}","color":"f13128","pronouns":"n/a","gender":"","age":"","biography":""}')`;
+  
+      con.query(sql, function (err, result) {
+      if (err) throw err;
+            console.log("1 record inserted");
+      });
+    }
+
+    var accessToken = await getAccessToken(req);
+
+    if(!accessToken)
+    {
+      var sql = `INSERT INTO dashboardlogins (userIP, accessToken, tokenExpire) VALUES ('${ip}', '${json.access_token}', ${Date.now() + 604800000})`;
+  
+      con.query(sql, function (err, result) {
+      if (err) throw err;
+            console.log("1 record inserted");
+      });
+    }
+    res.redirect(`/profile/${userInfo.id}`);
  }));
 
 module.exports = router;

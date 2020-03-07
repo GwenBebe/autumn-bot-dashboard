@@ -61,75 +61,75 @@ function verifyModule(props) {
 
     if(props.moduleSettings.enabled){
         var enableSwitch = 
-        (<label class="switch" name="enabled">
-            <input class="module-switch" defaultChecked type="checkbox" name="enabled"/>
-            <span class="slider round"></span>
+        (<label className="switch" name="enabled">
+            <input className="module-switch" defaultChecked type="checkbox" name="enabled"/>
+            <span className="slider round"></span>
         </label>)
     }else{
         var enableSwitch = 
-        (<label class="switch" name="enabled">
-            <input class="module-switch" type="checkbox" name="enabled"/>
-            <span class="slider round"></span>
+        (<label className="switch" name="enabled">
+            <input className="module-switch" type="checkbox" name="enabled"/>
+            <span className="slider round"></span>
         </label>)
     }
   return (
-    <DefaultLayout loggedIn={props.loggedIn} username={props.username} tag={props.tag} dirname={props.host} protocol={props.protocol}> 
-    <div class="module-guild guild-current">
-        <div class="guild">
+    <DefaultLayout loggedIn={props.loggedIn} userInfo={props.userInfo} dirname={props.host} protocol={props.protocol} dashboard={true}> 
+    <div className="module-guild guild-current">
+        <div className="guild">
             {(() => {
                 if(props.guild.icon)
                 {
                     return(
-                        <div class="guild-icon guild-element">
-                        <img class="guild-icon" src={`https://cdn.discordapp.com/icons/${props.guild.id}/${props.guild.icon}.png?size=512`}></img>
+                        <div className="guild-icon guild-element">
+                        <img className="guild-icon" src={`https://cdn.discordapp.com/icons/${props.guild.id}/${props.guild.icon}.png?size=512`}></img>
                         </div>
                     )
                 }else{
                     return(
-                        <div class="guild-icon guild-noicon guild-element">
+                        <div className="guild-icon guild-noicon guild-element">
                             <span>{props.guild.acro}</span>
                         </div>
                     )
                 }
             })()}
-            <p class="guild-name guild-element">{props.guild.name}</p>
-            <a href={`/dashboard/${props.guild.id}`} class="dashboard-btn btn btn-secondary btn-lg guild-element">{'<'} Back</a>
+            <p className="guild-name guild-element">{props.guild.name}</p>
+            <a href={`/dashboard/${props.guild.id}`} className="dashboard-btn btn btn-secondary btn-lg guild-element">{'<'} Back</a>
         </div>
     </div>
-    <div class="settings-head">
-        <h1 class="module-title">Verification</h1>
+    <div className="settings-head">
+        <h1 className="module-title">Verification</h1>
         {enableSwitch}
 
     </div>
-    <div class="settings">
+    <div className="settings card-large">
     <form id="verifySettings" action={`/api/dashboard/update/verify/${props.guild.id}`}>
-        <div class="form-group">
+        <div className="form-group">
             <label for="VerifyChannel"><b>Verification Channel</b><br/>This is the channel where new users will send their verification application.</label>
-            <select class="custom-select" name="VerifyChannel">
+            <select className="custom-select" name="VerifyChannel">
                 {verifyList}
             </select>
         </div>
-        <div class="form-group">
+        <div className="form-group">
             <label for="MVChannel"><b>Mod Verification Channel</b><br/>This is the channel where moderators will accept/deny verification applications.</label>
-            <select class="custom-select" name="MVChannel">
+            <select className="custom-select" name="MVChannel">
                 {modVerifyList}
             </select>
         </div>
-        <div class="form-group">
+        <div className="form-group">
             <label for="VerifyChannel"><b>Staff Role</b><br/>This is the role given to the staff/moderators who verify applications.</label>
-            <select  class="custom-select" name="StaffRole">
+            <select  className="custom-select" name="StaffRole">
                 {staffList}
             </select>
         </div>
-        <div class="form-group">
+        <div className="form-group">
             <label for="NonVerifiedRole"><b>Non Verified Role</b><br/>This is the role given users who are not yet verified.</label>
-            <select class="custom-select" name="NonVerifiedRole">
+            <select className="custom-select" name="NonVerifiedRole">
                 {nonVerifyList}
             </select>
         </div>
-        <div class="form-group">  
+        <div className="form-group">  
             <label for="VMessage"><b>Verification Message</b><br/>This is message send to users who have been verified.</label>
-            <textarea class="form-control" rows="3" name="VMessage" type="text" defaultValue={(() => {
+            <textarea className="form-control" rows="3" name="VMessage" type="text" defaultValue={(() => {
                 if(props.moduleSettings.VMessage){
                     return props.moduleSettings.VMessage;
                 }else{
@@ -137,8 +137,8 @@ function verifyModule(props) {
                 }
             })()}></textarea>
         </div>
-        <div class="submit-btn">
-            <span class="response"></span><input data-module="verification" data-guild={props.guild.id} type="button" class="form-submit btn btn-primary" defaultValue="Save" />
+        <div className="submit-btn">
+            <span className="response"></span><input data-module="verification" data-guild={props.guild.id} type="button" className="form-submit btn btn-primary" defaultValue="Save" />
         </div>
     </form>
     </div>

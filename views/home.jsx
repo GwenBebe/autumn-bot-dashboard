@@ -3,7 +3,7 @@ var DefaultLayout = require('./layouts/default');
 
 function HomePage(props) {
   return (
-    <DefaultLayout page="home" loggedIn={props.loggedIn} username={props.username} tag={props.tag} dirname={props.host} protocol={props.protocol}>
+    <DefaultLayout page="home" loggedIn={props.loggedIn} userInfo={props.userInfo} dirname={props.host} protocol={props.protocol}>
 <div>
   <div className="heading text-center">
     <h1 className="display-5 title">Autumn Bot</h1>

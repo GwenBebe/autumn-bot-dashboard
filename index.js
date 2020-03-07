@@ -60,6 +60,16 @@ function getUserInfo(ip) {
     })
 }
 
+function getProfile(userID) {
+    return new Promise((resolve, reject) => {
+        con.query(
+            "SELECT * FROM profiles WHERE userID = '" + userID + "' LIMIT 1",
+            (err, result) => {
+                return err ? reject(err) : resolve(result[0]);
+            })
+    })
+}
+
 async function getGuildInfo(id) {
     return new Promise((resolve, reject) => {
         con.query(
@@ -143,8 +153,7 @@ app.get('/dashboard/:guildID', catchAsync(async(req, res) => {
         const userInfo = await response.json()
         res.render('guild-dashboard', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             guild: guild,
             host: req.get('host'),
             protocol: req.protocol,
@@ -196,8 +205,7 @@ app.get('/dashboard/:guildID/:module', catchAsync(async(req, res) => {
 
                 res.render('verify-module', {
                     loggedIn: true,
-                    username: userInfo.username,
-                    tag: userInfo.discriminator,
+                    userInfo: userInfo,
                     moduleSettings: VerifyModule,
                     guild: guild,
                     channels: channels,
@@ -227,8 +235,7 @@ app.get('/about', catchAsync(async(req, res) => {
         const userInfo = await response.json()
         res.render('about', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             servers: client.guilds.array().length.toString(),
             host: req.get('host'),
             protocol: req.protocol,
@@ -256,8 +263,7 @@ app.get('/features', catchAsync(async(req, res) => {
         const userInfo = await response.json()
         res.render('features', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             host: req.get('host'),
             protocol: req.protocol,
         });
@@ -284,8 +290,7 @@ app.get('/commands', catchAsync(async(req, res) => {
         const userInfo = await response.json()
         res.render('commands', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             host: req.get('host'),
             protocol: req.protocol,
         });
@@ -348,14 +353,120 @@ app.get('/dashboard', catchAsync(async(req, res) => {
         })
         res.render('servers', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             guilds: result,
             host: req.get('host'),
             protocol: req.protocol,
         });
     } else {
         res.redirect('login')
+    }
+}));
+
+app.get('/profile', catchAsync(async(req, res) => {
+    const accessToken = await getAccessToken(req);
+
+    if (accessToken) {
+        const response = await fetch(`http://discordapp.com/api/users/@me`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        const userInfo = await response.json()
+
+        const profileInfo = await getProfile(userInfo.id);
+        var profile = JSON.parse(escapeSpecialChars(profileInfo.profile));
+
+        res.render('profile', {
+            profileOwner: true,
+            profile: profile,
+            loggedIn: true,
+            userInfo: userInfo,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    } else {
+        res.redirect('/login');
+    }
+}));
+
+app.get('/profile/:userID', catchAsync(async(req, res) => {
+    const accessToken = await getAccessToken(req);
+
+    const profileInfo = await getProfile(req.params.userID);
+
+    if (!profileInfo)
+    {
+        res.redirect('/home');
+        return;
+    }
+
+    var profile = JSON.parse(escapeSpecialChars(profileInfo.profile));
+
+    if (accessToken) {
+        const response = await fetch(`http://discordapp.com/api/users/@me`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        const userInfo = await response.json()
+
+        if(userInfo.id == profile.userID)
+        {
+            var profileOwner = true;
+        }
+        else
+        {
+            var profileOwner = false;
+        }
+
+        res.render('profile', {
+            profileOwner: profileOwner,
+            profile: profile,
+            loggedIn: true,
+            userInfo: userInfo,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    } else {
+        res.render('profile', {
+            profileOwner: false,
+            profile: profile,
+            loggedIn: false,
+            host: req.get('host'),
+            protocol: req.protocol,
+    })
+    }
+}));
+
+
+app.get('/profile/:userID/edit', catchAsync(async(req, res) => {
+    const accessToken = await getAccessToken(req);
+
+    if (accessToken) {
+        const response = await fetch(`http://discordapp.com/api/users/@me`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+        const userInfo = await response.json()
+
+        const profileInfo = await getProfile(req.params.userID);
+        var profile = JSON.parse(escapeSpecialChars(profileInfo.profile));
+
+        res.render('edit-profile', {
+            profileOwner: true,
+            profile: profile,
+            loggedIn: true,
+            userInfo: userInfo,
+            host: req.get('host'),
+            protocol: req.protocol,
+        });
+    } else {
+        res.redirect('/login');
     }
 }));
 
@@ -381,8 +492,7 @@ app.get('/home', catchAsync(async(req, res) => {
         const userInfo = await response.json()
         res.render('home', {
             loggedIn: true,
-            username: userInfo.username,
-            tag: userInfo.discriminator,
+            userInfo: userInfo,
             servers: client.guilds.array().length.toString(),
             users: client.users.array().length.toString(),
             channels: client.channels.array().length.toString(),

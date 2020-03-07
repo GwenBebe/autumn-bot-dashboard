@@ -135,7 +135,7 @@ router.get('/callback', catchAsync(async (req, res) => {
           }
       }
 
-      var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}',${final})`;
+      var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}','${final}')`;
   
       con.query(sql, function (err, result) {
       if (err) throw err;

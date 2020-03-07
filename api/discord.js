@@ -134,17 +134,6 @@ router.get('/callback', catchAsync(async (req, res) => {
               count++;
           }
       }
-      
-      var final = profileJSON;
-
-      var a = 0;
-      var count = 0;
-      for (a = 0; a < profileJSON.length; a++) {
-          if (profileJSON.charAt(a) == "'") {
-              final = [final.slice(0, a + count), '\\', final.slice(a + count)].join('');
-              count++;
-          }
-      }
 
       var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}',${final})`;
   

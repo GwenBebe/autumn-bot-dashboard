@@ -251,6 +251,8 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
                 }
             }
 
+            console.log(final);
+
             res.send("Saved!");
 
             setProfile(userInfo.id, final);

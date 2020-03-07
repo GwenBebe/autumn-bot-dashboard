@@ -1,8 +1,19 @@
 var React = require('react');
 var DefaultLayout = require('./layouts/default');
+const ReactMarkdown = require('react-markdown');
 
 function profilePage(props) {
-  console.log(props.profile);
+  var biography = props.profile.biography;
+
+  var a = 0;
+  var count = 0;
+  for (a = 0; a < props.profile.biography.length; a++) {
+      if (props.profile.biography.substring(a, a+1) == "\n") {
+          biography = [biography.slice(0, a + count + 1), '\n', biography.slice(a + count + 1)].join('');
+          count++;
+      }
+  }
+  
   return (
     <DefaultLayout loggedIn={props.loggedIn} userInfo={props.userInfo} dirname={props.host} protocol={props.protocol}> 
     <div className="profile">
@@ -17,6 +28,11 @@ function profilePage(props) {
 
         .profile p{
             color: #${props.profile.color};
+        }
+
+        #bio p a
+        {
+          color: #${props.profile.color};
         }
       `}} />
         {(() => {
@@ -37,14 +53,7 @@ function profilePage(props) {
           <img id="profilePicture"src={`https://cdn.discordapp.com/avatars/${props.profile.userID}/${props.profile.avatar}.png?size=512`} />
           <h4 id="username">{props.profile.username}#{props.profile.tag}</h4>
         </div>
-        <h5 id="bio">{props.profile.biography.split('\n').map(function(item, key) {
-          return (
-            <span key={key}>
-              {item}
-              <br/>
-            </span>
-          )
-        })}</h5>
+        <h5 id="bio"><ReactMarkdown skipHtml={true} source={biography}/></h5>
         <h6>Pronouns</h6>
         <p>{props.profile.pronouns}</p>
         {(() => {

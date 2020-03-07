@@ -581,7 +581,15 @@ input {
     margin: 2px 30% 2px 30%;
 }
 
+#bio p{
+    color: white;
+    font-size: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 #bio{
+    color: white;
     font-size: 20px !important;
     padding-top: 10px;
 }

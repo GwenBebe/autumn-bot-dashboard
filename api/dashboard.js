@@ -79,6 +79,15 @@ function setGuildInfo(value, id, column) {
         })
 }
 
+function setProfile(id, profile) {
+    con.query(
+        "UPDATE profiles SET profile = '" + profile + "' WHERE userID = '" + id + "'",
+        (err, result) => {
+          if(err) throw err;
+            console.log("Updated " + result.affectedRows + " row(s)");
+        })
+}
+
 function deleteUserInfo(ip) {
     con.query(
         "DELETE FROM dashboardlogins WHERE userIP = '" + ip + "'",
@@ -107,7 +116,7 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
         const userInfo = await response.json();
 
         console.log(userInfo.username + " Logged In");
-
+        
         if (req.body.module == "verification") {
             if (req.body.enabled == "true") {
                 var verifyModuleOBJ = {
@@ -210,6 +219,41 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
 
             setGuildInfo(final, guildID, "VerifyModule");
 
+        }if(req.body.module == "profile")
+        {
+            const response = await fetch(`http://discordapp.com/api/users/@me`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+            const userInfo = await response.json();
+
+            var profileOBJ = {
+                userID: userInfo.id,
+                username: userInfo.username,
+                tag: userInfo.discriminator,
+                avatar: userInfo.avatar,
+                color: req.body.color,
+                pronouns: req.body.pronouns,
+                gender: req.body.gender,
+                age: req.body.age,
+                biography: req.body.biography,
+            }
+            var final = JSON.stringify(profileOBJ);
+
+            var a = 0;
+            var count = 0;
+            for (a = 0; a < JSON.stringify(profileOBJ).length; a++) {
+                if (JSON.stringify(profileOBJ).charAt(a) == "'") {
+                    final = [final.slice(0, a + count), '\\', final.slice(a + count)].join('');
+                    count++;
+                }
+            }
+
+            res.send("Saved!");
+
+            setProfile(userInfo.id, final);
         }
 
     } else {

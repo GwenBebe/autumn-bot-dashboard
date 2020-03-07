@@ -41,13 +41,13 @@ $(function() {
 
       if(pronouns == '')
       {
-        $(".invalid-feedback").css('display','block');
+        $("#pronouns-invalid-feedback").css('display','block');
         $("input[name=pronouns]").addClass('invalid-form');
         return;
       }
       else
       {
-        $(".invalid-feedback").css('display','none');
+        $("#pronouns-invalid-feedback").css('display','none');
         $("input[name=pronouns]").removeClass('invalid-form');
       }
 

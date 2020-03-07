@@ -53,7 +53,7 @@ function editProfile(props) {
             <div className="form-group">
                 <label for="pronouns"><b>Pronouns</b></label>
                 <input required className="form-control" name="pronouns" type="text" value={props.profile.pronouns}/>
-                <div class="invalid-feedback">Please Provide Your Pronouns!</div>
+                <div id="pronouns-invalid-feedback">Please Provide Your Pronouns!</div>
             </div>
             <div className="form-group">
                 <label for="gender"><b>Gender</b> <span className="dark">OPTIONAL</span></label>
@@ -65,8 +65,8 @@ function editProfile(props) {
                 <label for="age"><b>Age</b> <span className="dark">OPTIONAL</span></label>
                 <input className="form-control" name="age" type="number" value={props.profile.age}/>
             </div>
-            <div className="form-group">  
-                <label for="biography"><b>Biography</b></label>
+            <div className="form-group" id="biography">  
+                <label for="biography"><b>Biography</b> <span className="dark">OPTIONAL</span></label>
                 <textarea className="form-control" rows="3" name="biography" type="text" defaultValue={(() => {
                     if(props.profile.biography){
                         return props.profile.biography;

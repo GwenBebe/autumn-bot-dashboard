@@ -645,9 +645,9 @@ input {
 }
 
 textarea.form-control {
-    border: 1px solid rgb(99, 99, 99);
+    border: 1px solid rgb(99, 99, 99) !important;
     color: white !important;
-    background-color: rgb(83, 83, 83)!important;
+    background-color: rgb(83, 83, 83) !important;
     height: auto !important;
     -webkit-transition: background-color 1s ease, color 1s ease;
     -moz-transition: background-color 1s ease, color 1s ease;

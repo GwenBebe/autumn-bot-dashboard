@@ -53,7 +53,7 @@ function editProfile(props) {
             <div className="form-group">
                 <label for="pronouns"><b>Pronouns</b></label>
                 <input required className="form-control" name="pronouns" type="text" value={props.profile.pronouns}/>
-                <div id="pronouns-invalid-feedback">Please Provide Your Pronouns!</div>
+                <div class="invalid-feedback" id="pronouns-invalid-feedback">Please Provide Your Pronouns!</div>
             </div>
             <div className="form-group">
                 <label for="gender"><b>Gender</b> <span className="dark">OPTIONAL</span></label>

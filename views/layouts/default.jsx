@@ -21,6 +21,7 @@ function DefaultLayout(props) {
   <meta property="og:url" content="https://www.autumnbot.net/home" />
   <meta property="og:description" content />
   <meta property="og:image" content="https://www.autumnbot.net/images/thumbnail.png" />
+  <meta name="twitter:image" content="https://www.autumnbot.net/images/thumbnail.png" />
   <link rel="image_src" href="/images/thumbnail.png" />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/bootstrap.min.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/main.css`} />

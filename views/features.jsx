@@ -30,6 +30,13 @@ function FeaturesPage(props) {
 						<p className="mb-0">Use the randomized fun commands to interact with your friends! These commands are perks of voting for the bot, so don't forget to support your favorite  non-human.</p>
 					</div>
 				</div>
+				<div className="media">
+					<div className="media-body">
+						<h5 className="mt-0">Custom Universal Profiles</h5>
+						<p className="mb-0">Create a profile on the website and view it in any server Autumn Bot is in. Let people get to know you without the trouble of telling them yourself. (It avoids the awkwardness.)</p>
+					</div>
+					<img src="/images/feature4.png" className="align-self-center mr-3" alt="..." />
+				</div>
 			</div>
 		</DefaultLayout>
 	);

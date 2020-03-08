@@ -352,7 +352,7 @@ h5 {
     border-radius: 3px;
     background-color: #464646;
     position: relative;
-    box-shadow: 3px 3px 8px #000000;
+    box-shadow: 4px 4px 4px #1f1f1f;
 }
 
 .module-title {

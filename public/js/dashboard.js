@@ -13,7 +13,7 @@ $(function() {
       window.open(`api/discord/invite/${event.target.id}`, 'popup', 'width=600,height=600');
   });
 
-  $(".module").click(function(event) {
+  $(".module-open").click(function(event) {
       console.log($(this).data('guild'))
       //window.location.replace(`api/discord/invite/${event.target.id}`,'popup','width=600,height=600').unload(console.log("Window Closed"));
       window.location.replace(`/dashboard/${$(this).data('guild')}/${event.target.id}`);

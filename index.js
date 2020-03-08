@@ -502,6 +502,9 @@ app.get('/home', catchAsync(async(req, res) => {
     } else {
         res.render('home', {
             loggedIn: false,
+            servers: client.guilds.array().length.toString(),
+            users: client.users.array().length.toString(),
+            channels: client.channels.array().length.toString(),
             host: req.get('host'),
             protocol: req.protocol,
         });

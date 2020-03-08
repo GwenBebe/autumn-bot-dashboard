@@ -15,6 +15,7 @@ function DefaultLayout(props) {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <meta name=" theme-color" content="#f13128"/>
+	  <meta name="thumbnail" content="/images/thumbnail.png" />
       <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/bootstrap.min.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/main.css`} />

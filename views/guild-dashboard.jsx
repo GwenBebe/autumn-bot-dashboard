@@ -78,7 +78,7 @@ function dashboardPage(props) {
             <span id="levels" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
         </div>
         <div className="module-soon module module-component" id="games">
-            <img id="games" className="module-icon module-component" src="/images/medal.png"></img>
+            <img id="games" className="module-icon module-component" src="/images/game.png"></img>
             <span id="games" className="module-name module-component">Games</span>
             <span id="games" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
         </div>

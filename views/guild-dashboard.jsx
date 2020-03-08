@@ -62,10 +62,25 @@ function dashboardPage(props) {
             <span id="moderation" className="module-name module-component">Moderation</span>
             <span id="moderation" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
         </div>
-        <div className="module-soon module module-component" id="moderation">
-            <img id="moderation" className="module-icon module-component" src="/images/medal.png"></img>
-            <span id="moderation" className="module-name module-component">Levels</span>
-            <span id="moderation" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
+        <div className="module-soon module module-component" id="tickets">
+            <img id="tickets" className="module-icon module-component" src="/images/clipboard.png"></img>
+            <span id="tickets" className="module-name module-component">Tickets</span>
+            <span id="tickets" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
+        </div>
+        <div className="module-soon module module-component" id="react-roles">
+            <img id="react-roles" className="module-icon module-component" src="/images/role.png"></img>
+            <span id="react-roles" className="module-name module-component">React Roles</span>
+            <span id="react-roles" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
+        </div>
+        <div className="module-soon module module-component" id="levels">
+            <img id="levels" className="module-icon module-component" src="/images/medal.png"></img>
+            <span id="levels" className="module-name module-component">Levels</span>
+            <span id="levels" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
+        </div>
+        <div className="module-soon module module-component" id="games">
+            <img id="games" className="module-icon module-component" src="/images/medal.png"></img>
+            <span id="games" className="module-name module-component">Games</span>
+            <span id="games" className="module-description module-component"><span className="dark">COMING SOON...</span></span>
         </div>
     </div>
     </DefaultLayout>

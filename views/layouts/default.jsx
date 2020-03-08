@@ -16,7 +16,7 @@ function DefaultLayout(props) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#f13128" />
   <meta name="thumbnail" content="/images/thumbnail.png" />
-  <meta property="og:site_name" content="Autumn Bot" />
+  <meta property="og:title" content="Autumn Bot" />
   <meta property="og:url" content="https://www.autumnbot.net/home" />
   <meta property="og:description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation." />
   <meta property="og:image" content="https://www.autumnbot.net/images/thumbnail.png" />

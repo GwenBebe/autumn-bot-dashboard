@@ -1,6 +1,8 @@
-var React = require('react');
-var DefaultLayout = require('./layouts/default');
+const React = require('react');
+const DefaultLayout = require('./layouts/default');
 const ReactMarkdown = require('react-markdown');
+const uEmojiParser = require('universal-emoji-parser');
+var ReactDOMServer = require('react-dom/server');
 
 function profilePage(props) {
   var biography = props.profile.biography;
@@ -13,6 +15,8 @@ function profilePage(props) {
           count++;
       }
   }
+
+  var bio = uEmojiParser.parse(ReactDOMServer.renderToStaticMarkup(<ReactMarkdown skipHtml={true} source={biography}/>));
   
   return (
     <DefaultLayout loggedIn={props.loggedIn} userInfo={props.userInfo} dirname={props.host} protocol={props.protocol}> 
@@ -53,7 +57,7 @@ function profilePage(props) {
           <img id="profilePicture"src={`https://cdn.discordapp.com/avatars/${props.profile.userID}/${props.profile.avatar}.png?size=512`} />
           <h4 id="username">{props.profile.username}#{props.profile.tag}</h4>
         </div>
-        <h5 id="bio"><ReactMarkdown skipHtml={true} source={biography}/></h5>
+        <h5 id="bio"  dangerouslySetInnerHTML={{__html:bio}}></h5>
         <h6>Pronouns</h6>
         <p>{props.profile.pronouns}</p>
         {(() => {

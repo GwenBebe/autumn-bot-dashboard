@@ -588,6 +588,10 @@ input {
     margin: 0 !important;
 }
 
+#bio p .emoji{
+    height: 32px;
+}
+
 #bio{
     color: white;
     font-size: 20px !important;

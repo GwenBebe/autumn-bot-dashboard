@@ -17,7 +17,6 @@ function DefaultLayout(props) {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"   crossOrigin="anonymous"></script>
       <script src={`${props.protocol}://${props.dirname}/js/bootstrap.min.js`}></script>
       <script src={`${props.protocol}://${props.dirname}/js/jscolor.js`}></script>
-      <script src={`${props.protocol}://${props.dirname}/js/twemoji.js`}></script>
       <script src={`${props.protocol}://${props.dirname}/js/now-ui-kit.min.js`}></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       {(() => {if(props.dashboard) { return <script src={`${props.protocol}://${props.dirname}/js/dashboard.js`}></script>}})()}

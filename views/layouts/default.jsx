@@ -5,7 +5,7 @@ function DefaultLayout(props) {
     <head>
     <div>
   <meta name="title" content="Autumn Bot" />
-  <meta name="description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation. " />
+  <meta name="description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation." />
   <meta name="keywords" content="Autumn Bot, AutumnBot, Discord, Top.gg, discord, moderation, mod, verify, verification, discordapp, server, bot, dashboard" />
   <meta name="robots" content="index, nofollow" />
   <meta httpequiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,10 +16,9 @@ function DefaultLayout(props) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#f13128" />
   <meta name="thumbnail" content="/images/thumbnail.png" />
-  <meta property="og:title" content="Autumn Bot" />
   <meta property="og:site_name" content="Autumn Bot" />
   <meta property="og:url" content="https://www.autumnbot.net/home" />
-  <meta property="og:description" content />
+  <meta property="og:description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation." />
   <meta property="og:image" content="https://www.autumnbot.net/images/thumbnail.png" />
   <meta name="twitter:image" content="https://www.autumnbot.net/images/thumbnail.png" />
   <link rel="image_src" href="/images/thumbnail.png" />

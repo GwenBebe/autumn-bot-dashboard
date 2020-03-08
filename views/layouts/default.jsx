@@ -17,6 +17,7 @@ function DefaultLayout(props) {
       <meta name=" theme-color" content="#f13128"/>
 	  <meta name="thumbnail" content="/images/thumbnail.png" />
       <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+	  <link rel="image_src" href="/images/thumbnail.png" />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/bootstrap.min.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/main.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/now-ui-kit.css`} />

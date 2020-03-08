@@ -14,9 +14,13 @@ function DefaultLayout(props) {
       <meta name="author" content="GwenBebe" />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name=" theme-color" content="#f13128"/>
+      <meta name="theme-color" content="#f13128"/>
 	  <meta name="thumbnail" content="/images/thumbnail.png" />
-      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script><meta property="og:title" content="Autumn Bot">
+	  <meta property="og:site_name" content="Autumn Bot" />
+	  <meta property="og:url" content="https://www.autumnbot.net/home" />
+	  <meta property="og:description" content="" />
+	  <meta property="og:image" content="https://www.autumnbot.net/images/thumbnail.png" />
 	  <link rel="image_src" href="/images/thumbnail.png" />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/bootstrap.min.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/main.css`} />

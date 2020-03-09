@@ -112,7 +112,30 @@ router.get('/callback', catchAsync(async (req, res) => {
 
     if(!profile)
     {
-      var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}','{"userID":"${userInfo.id}","username":"${userInfo.username}","tag":"${userInfo.discriminator}","avatar":"${userInfo.avatar}","color":"f13128","pronouns":"n/a","gender":"","age":"","biography":""}')`;
+      var profileOBJ = {
+          userID: userInfo.id,
+          username: userInfo.username,
+          tag: userInfo.discriminator,
+          avatar: userInfo.avatar,
+          color: "f13128",
+          pronouns: "n/a",
+          gender: "",
+          age: "",
+          biography: ""
+      }
+
+      var final = JSON.stringify(profileOBJ);
+
+      var a = 0;
+      var count = 0;
+      for (a = 0; a < JSON.stringify(profileOBJ).length; a++) {
+          if (JSON.stringify(profileOBJ).charAt(a) == "'") {
+              final = [final.slice(0, a + count), '\\', final.slice(a + count)].join('');
+              count++;
+          }
+      }
+
+      var sql = `INSERT INTO profiles (userID, profile) VALUES ('${userInfo.id}','${final}')`;
   
       con.query(sql, function (err, result) {
       if (err) throw err;

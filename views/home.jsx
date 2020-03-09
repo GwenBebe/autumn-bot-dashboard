@@ -25,14 +25,20 @@ function HomePage(props) {
       </div>
       <div className="card" style={{width: '18rem'}}>
         <div className="card-body">
+          <h5 className="card-title">Custom Embeds</h5>
+          <p className="card-text">Create custom embedded messages to spice up your rules channel, verification channel, and more.</p>
+        </div>
+      </div>
+      <div className="card" style={{width: '18rem'}}>
+        <div className="card-body">
           <h5 className="card-title">Fun</h5>
           <p className="card-text">Poke, hug, or headpat your friends!</p>
         </div>
       </div>
       <div className="card" style={{width: '18rem'}}>
         <div className="card-body">
-          <h5 className="card-title">Custom Embeds</h5>
-          <p className="card-text">Create custom embedded messages to spice up your rules channel, verification channel, and more.</p>
+          <h5 className="card-title">User Profiles</h5>
+          <p className="card-text">Create a universal profile on the dashboard, and view yours and other's profiles in any server Autumn Bot is in.</p>
         </div>
       </div>
     </div>

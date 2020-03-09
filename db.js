@@ -9,7 +9,8 @@ var con = mysql.createConnection({
     host: SQL_HOST,
     user: SQL_USER,
     password: SQL_PASS,
-    database: SQL_BASE
+    database: SQL_BASE,
+    charset : 'utf8mb4'
 });
 
 con.connect(function(err) {

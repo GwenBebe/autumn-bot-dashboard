@@ -352,7 +352,7 @@ h5 {
     border-radius: 3px;
     background-color: #464646;
     position: relative;
-    box-shadow: 3px 3px 8px #000000;
+    box-shadow: 4px 4px 4px #1f1f1f;
 }
 
 .module-title {
@@ -581,7 +581,19 @@ input {
     margin: 2px 30% 2px 30%;
 }
 
+#bio p{
+    color: white;
+    font-size: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#bio p .emoji{
+    height: 32px;
+}
+
 #bio{
+    color: white;
     font-size: 20px !important;
     padding-top: 10px;
 }
@@ -633,9 +645,9 @@ input {
 }
 
 textarea.form-control {
-    border: 1px solid rgb(99, 99, 99);
+    border: 1px solid rgb(99, 99, 99) !important;
     color: white !important;
-    background-color: rgb(83, 83, 83)!important;
+    background-color: rgb(83, 83, 83) !important;
     height: auto !important;
     -webkit-transition: background-color 1s ease, color 1s ease;
     -moz-transition: background-color 1s ease, color 1s ease;
@@ -842,7 +854,7 @@ textarea {
     .basic-head {
         margin: 2px 10px 2px 10px;
     }
-    .settings, .commands {
+    .settings, .commands, .profile {
         margin: 2px 15px 15px 15px;
     }
 

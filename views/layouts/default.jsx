@@ -4,8 +4,24 @@ function DefaultLayout(props) {
     <html>
     <head>
     <div>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="title" content="Autumn Bot" />
+  <meta name="description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation." />
+  <meta name="keywords" content="Autumn Bot, AutumnBot, Discord, Top.gg, discord, moderation, mod, verify, verification, discordapp, server, bot, dashboard" />
+  <meta name="robots" content="index, nofollow" />
+  <meta httpequiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="10 days" />
+  <meta name="author" content="GwenBebe" />
+  <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#f13128" />
+  <meta name="thumbnail" content="/images/thumbnail.png" />
+  <meta property="og:title" content="Autumn Bot" />
+  <meta property="og:url" content="https://www.autumnbot.net/home" />
+  <meta property="og:description" content="Multi-Purpose Discord Bot used for verification, profiles, and moderation." />
+  <meta property="og:image" content="https://www.autumnbot.net/images/thumbnail.png" />
+  <meta name="twitter:image" content="https://www.autumnbot.net/images/thumbnail.png" />
+  <link rel="image_src" href="/images/thumbnail.png" />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/bootstrap.min.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/main.css`} />
       <link rel="stylesheet" href={`${props.protocol}://${props.dirname}/css/now-ui-kit.css`} />

@@ -59,6 +59,8 @@ function verifyModule(props) {
 
     const nonVerifyList = rolesMap(roles, props.moduleSettings.NonVerifiedRole);
 
+    const verifiedList = rolesMap(roles, props.moduleSettings.VerifiedRole);
+
     if(props.moduleSettings.enabled){
         var enableSwitch = 
         (<label className="switch" name="enabled">
@@ -72,6 +74,21 @@ function verifyModule(props) {
             <span className="slider round"></span>
         </label>)
     }
+
+    if(props.moduleSettings.VerifiedRoleEnabled){
+        var verifiedSwitch = 
+        (<label id="verified-switch" className="switch" name="verifiedRoleEnabled">
+            <input className="verified-switch" defaultChecked type="checkbox" name="verifiedRoleEnabled"/>
+            <span className="slider round"></span>
+        </label>)
+    }else{
+        var verifiedSwitch = 
+        (<label id="verified-switch" className="switch" name="verifiedRoleEnabled">
+            <input className="verified-switch" type="checkbox" name="verifiedRoleEnabled"/>
+            <span className="slider round"></span>
+        </label>)
+    }
+
   return (
     <DefaultLayout loggedIn={props.loggedIn} userInfo={props.userInfo} dirname={props.host} protocol={props.protocol} dashboard={true}> 
     <div className="module-guild guild-current">
@@ -125,6 +142,17 @@ function verifyModule(props) {
             <label for="NonVerifiedRole"><b>Non Verified Role</b><br/>This is the role given users who are not yet verified.</label>
             <select className="custom-select" name="NonVerifiedRole">
                 {nonVerifyList}
+            </select>
+        </div>
+        <div className="form-group">
+            <label className="switch-label-parent" for="AutoRole">
+                <div className="switch-label">
+                    <div id="verifiedRole"><b>Verified Role</b><br/>Give users a role once they're verified.</div>
+                    {verifiedSwitch}
+                </div>
+            </label>
+            <select id="verified-select" className="custom-select" name="AutoRole">
+                {verifiedList}
             </select>
         </div>
         <div className="form-group">  

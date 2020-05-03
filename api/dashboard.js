@@ -125,6 +125,8 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
                     MVChannel: req.body.MVChannel,
                     StaffRole: req.body.StaffRole,
                     NonVerifiedRole: req.body.NonVerifiedRole,
+                    VerifiedRole: req.body.VerifiedRole,
+                    VerifiedRoleEnabled: req.body.VerifiedRoleEnabled,
                     VMessage: req.body.VMessage
                 }
             } else {
@@ -134,6 +136,8 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
                     MVChannel: req.body.MVChannel,
                     StaffRole: req.body.StaffRole,
                     NonVerifiedRole: req.body.NonVerifiedRole,
+                    VerifiedRole: req.body.VerifiedRole,
+                    VerifiedRoleEnabled: req.body.VerifiedRoleEnabled,
                     VMessage: req.body.VMessage,
                 }
             }

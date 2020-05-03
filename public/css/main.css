@@ -623,6 +623,26 @@ input {
     border: 3px solid white;
 }
 
+.switch-label-parent{
+    width: 100% !important;
+}
+
+.switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: middle;
+    width: 100% !important;
+}
+
+#verifiedRole {
+    transition: color 1s;
+}
+
+.switch-label .switch {
+    margin-left: auto;
+}
+
 .settings-head,
 .modules-head {
     display: flex;

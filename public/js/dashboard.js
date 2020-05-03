@@ -1,10 +1,20 @@
 $(function() {
     if(!$(".module-switch").prop('checked')) {
         $("select, textarea").attr("disabled", true);
+        $(".switch-label .switch").attr("style", "display: none !important");
         $("label").css('color','rgb(146, 146, 146)')
+
     }else{
         $("select, textarea").attr("disabled", false);
         $("label").css('color','white')
+
+        if(!$(".verified-switch").prop('checked')) {
+            $("#verifiedRole").css('color','rgb(146, 146, 146)');
+            $("#verified-select").css('display','none')
+        }else{
+            $("#verifiedRole").css('color','white');
+            $("#verified-select").css('display','')
+        }
     }
   console.log("ready!");
   $(".inviteGuild").click(function(event) {
@@ -28,19 +38,43 @@ $(function() {
   $(".switch").click(function() {
     if(!$(".module-switch").prop('checked')) {
         $("select, textarea").attr("disabled", true);
+        $(".switch-label .switch").fadeOut(400, function () {
+            $(".switch-label .switch").attr("style", "display: none !important");
+        })
         $("label").css('color','rgb(146, 146, 146)')
     }else{
         $("select, textarea").attr("disabled", false);
+        $(".switch-label .switch").fadeIn();
         $("label").css('color','white')
+    }
+  });
+
+  $(".verified-switch").click(function() {
+    if(!$(".verified-switch").prop('checked')) {
+        $("#verifiedRole").css('color','rgb(146, 146, 146)');
+        $("select, textarea, verified-switch").attr("disabled", true);
+        $("#verified-select").slideUp();
+    }else{
+        $("#verifiedRole").css('color','white');
+        $("select, textarea, verified-switch").attr("disabled", false);
+        $("#verified-select").slideDown();
     }
   });
   $(".form-submit").click(function(event) {
       var enabledSwitch = $("input[type=checkbox][name=enabled]");
 
+      var verifiedRoleSwitch = $("input[type=checkbox][name=verifiedRoleEnabled]");
+
       if (enabledSwitch.is(':checked')) {
           var enabled = true;
       } else {
           var enabled = false;
+      }
+
+      if (verifiedRoleSwitch.is(':checked')) {
+          var verifiedRoleEnabled = true;
+      } else {
+          var verifiedRoleEnabled = false;
       }
 
       var VerifyChannel = $("select[name=VerifyChannel]").find(':selected').data('channel');
@@ -50,6 +84,8 @@ $(function() {
       var StaffRole = $("select[name=StaffRole]").find(':selected').data('role');
 
       var NonVerifiedRole = $("select[name=NonVerifiedRole]").find(':selected').data('role');
+
+      var verifiedRole = $("select[name=AutoRole]").find(':selected').data('role');
 
       var VMessage = $("textarea[name=VMessage]").val();
 
@@ -61,6 +97,8 @@ $(function() {
               MVChannel: MVChannel,
               StaffRole: StaffRole,
               NonVerifiedRole: NonVerifiedRole,
+              VerifiedRoleEnabled: verifiedRoleEnabled,
+              VerifiedRole: verifiedRole,
               VMessage: VMessage
           },
           function(data, status) {
@@ -68,6 +106,9 @@ $(function() {
               if(data == "Saved!")
               {
                 $(".response").html(data).css('color','rgb(79, 238, 100)').css('display', '').fadeOut(3000);
+              }
+              else{
+                $(".response").html(`ERR: ${data}`).css('color','rgb(255, 82, 82)').css('display', '').fadeOut(3000);
               }
           });
 

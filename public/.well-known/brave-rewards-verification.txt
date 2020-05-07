@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: autumnbot.net
+Token: 768339eca291e1e5fc799ea68174ee511ce5e9968741ef115c888f125b50a26b

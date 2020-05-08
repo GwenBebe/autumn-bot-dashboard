@@ -10,6 +10,7 @@ const {
     check,
     validationResult
 } = require('express-validator');
+const axios = require('axios')
 var con = require(__dirname + '/../db.js');
 var client = require(__dirname + '/../bot.js');
 
@@ -125,29 +126,36 @@ router.post('/update/:module/:guildID', catchAsync(async function(req, res) {
             {
                 var VerifiedRoleEnabled = false;
             }
-            if (req.body.enabled == "true") {
-                var verifyModuleOBJ = {
-                    enabled: true,
-                    VerifyChannel: req.body.VerifyChannel,
-                    MVChannel: req.body.MVChannel,
-                    StaffRole: req.body.StaffRole,
-                    NonVerifiedRole: req.body.NonVerifiedRole,
-                    VerifiedRole: req.body.VerifiedRole,
-                    VerifiedRoleEnabled: VerifiedRoleEnabled,
-                    VMessage: req.body.VMessage
-                }
-            } else {
-                var verifyModuleOBJ = {
-                    enabled: false,
-                    VerifyChannel: req.body.VerifyChannel,
-                    MVChannel: req.body.MVChannel,
-                    StaffRole: req.body.StaffRole,
-                    NonVerifiedRole: req.body.NonVerifiedRole,
-                    VerifiedRole: req.body.VerifiedRole,
-                    VerifiedRoleEnabled: req.body.VerifiedRoleEnabled,
-                    VMessage: req.body.VMessage,
-                }
+            if(req.body.enabled == "true")
+            {
+                var enabled = true;
             }
+            else
+            {
+                var enabled = false;
+            }
+            
+            var verifyModuleOBJ = {
+                enabled: enabled,
+                VerifyChannel: req.body.VerifyChannel,
+                MVChannel: req.body.MVChannel,
+                StaffRole: req.body.StaffRole,
+                NonVerifiedRole: req.body.NonVerifiedRole,
+                VerifiedRole: req.body.VerifiedRole,
+                VerifiedRoleEnabled: VerifiedRoleEnabled,
+                VMessage: req.body.VMessage,
+            }
+
+
+            axios
+            .post(`http://bot.autumnbot.net/api/update/${req.params.guildID}/verification`, verifyModuleOBJ)
+            .then(res => {
+            console.log("RES: " + res.data)
+            })
+            .catch(error => {
+            console.error(error)
+            })
+
             var final = JSON.stringify(verifyModuleOBJ);
 
             var a = 0;

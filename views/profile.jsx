@@ -57,7 +57,7 @@ function profilePage(props) {
           <img id="profilePicture"src={`https://cdn.discordapp.com/avatars/${props.profile.userID}/${props.profile.avatar}.png?size=512`} />
           <h4 id="username">{props.profile.username}#{props.profile.tag}</h4>
         </div>
-        <h5 style="overflow-wrap: break-word;" id="bio"  dangerouslySetInnerHTML={{__html:bio}}></h5>
+        <h5 id="bio"  dangerouslySetInnerHTML={{__html:bio}}></h5>
         <h6>Pronouns</h6>
         <p>{props.profile.pronouns}</p>
         {(() => {

@@ -31,26 +31,6 @@ async function getUserInfo(ip) {
     })
 }
 
-async function getAccessToken(req) {
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-
-    const loginInfo = await getUserInfo(ip);
-
-    if (loginInfo) {
-        var accessToken = loginInfo.accessToken;
-        var tokenExpire = loginInfo.tokenExpire;
-
-        if (tokenExpire < Date.now()) {
-            deleteUserInfo(ip);
-            return undefined;
-        } else {
-            return accessToken;
-        }
-    } else {
-        return undefined;
-    }
-}
-
 app.use(cookieParser());
 router.use(requestIp.mw());
 
@@ -81,13 +61,11 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/callback', catchAsync(async (req, res) => {
-    console.log(req.query);
     if (!req.query.code)
     {
       res.redirect('/home');
       throw new Error('NoCodeProvided');
     }
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
     const code = req.query.code;
     const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
@@ -143,16 +121,11 @@ router.get('/callback', catchAsync(async (req, res) => {
       });
     }
 
-    var accessToken = await getAccessToken(req);
+    var accessToken = req.cookies.access_token;
 
     if(!accessToken)
     {
-      var sql = `INSERT INTO dashboardlogins (userIP, accessToken, tokenExpire) VALUES ('${ip}', '${json.access_token}', ${Date.now() + 604800000})`;
-  
-      con.query(sql, function (err, result) {
-      if (err) throw err;
-            console.log("1 record inserted");
-      });
+      res.cookie('access_token', json.access_token, {expire: 604800000 + Date.now()}); 
     }
     res.redirect(`/profile/${userInfo.id}`);
  }));

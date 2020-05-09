@@ -89,20 +89,12 @@ function deleteUserInfo(ip) {
 }
 
 async function getAccessToken(req) {
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    const accessToken = req.cookies.access_token;
 
-    const loginInfo = await getUserInfo(ip);
+    console.log(req.cookies.access_token)
 
-    if (loginInfo) {
-        var accessToken = loginInfo.accessToken;
-        var tokenExpire = loginInfo.tokenExpire;
-
-        if (tokenExpire < Date.now()) {
-            deleteUserInfo(ip);
-            return undefined;
-        } else {
-            return accessToken;
-        }
+    if (accessToken) {
+        return accessToken;
     } else {
         return undefined;
     }
@@ -118,7 +110,9 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
-    res.redirect('api/discord/logout')
+    var backURL = req.header('Referer') || '/';
+    res.clearCookie('access_token');
+    res.redirect(backURL);
 })
 
 app.get('/close-popup*', (req, res) => {

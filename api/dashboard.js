@@ -23,20 +23,10 @@ router.use(requestIp.mw());
 //-----------------------------
 
 async function getAccessToken(req) {
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    const accessToken = req.cookies.access_token;
 
-    const loginInfo = await getUserInfo(ip);
-
-    if (loginInfo) {
-        var accessToken = loginInfo.accessToken;
-        var tokenExpire = loginInfo.tokenExpire;
-
-        if (tokenExpire < Date.now()) {
-            deleteUserInfo(ip);
-            return undefined;
-        } else {
-            return accessToken;
-        }
+    if (accessToken) {
+        return accessToken;
     } else {
         return undefined;
     }

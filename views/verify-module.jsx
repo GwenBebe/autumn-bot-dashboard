@@ -33,7 +33,7 @@ function rolesMap(roles, selectedID){
         var isSelected = false;
     }
     
-    if(role.name != "@everyone"){
+    if(role.name != "@everyone" && !role.managed){
         if(isSelected){
             return <option style={{color: `#${color}`}} data-role={role.id} selected>@{role.name}</option>
 

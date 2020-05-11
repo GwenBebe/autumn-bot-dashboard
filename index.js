@@ -336,7 +336,7 @@ app.get('/dashboard', catchAsync(async(req, res) => {
 
                 var str = guilds[i].name;
                 var matches = str.match(/\b(\w)/g); // ['J','S','O','N']
-                var acronym = matches.join('');
+                var acronym = matches ? matches.join('') : '';
 
                 guilds[i].acro = acronym;
                 admin.push(guilds[i])

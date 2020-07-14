@@ -8,8 +8,8 @@ var con = require(__dirname + '/../db.js');
 const router = express.Router();
 const app = express();
 
-const CLIENT_ID = '672548437346222110';
-const CLIENT_SECRET = '9Gw1yqL0qiELg9d7jYQ-IOpXkcw_o6jq';
+const CLIENT_ID = '';
+const CLIENT_SECRET = '';
 
 async function getProfile(userID) {
   return new Promise((resolve, reject) => {

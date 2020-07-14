@@ -13,7 +13,7 @@ const con = require(__dirname + '/db.js');
 var port = process.env.PORT || 3000;
 var app = express();
 
-const BOT_TOKEN = "NjcyNTQ4NDM3MzQ2MjIyMTEw.XlqgFw.kmBSFsir4CYtj26HHuI7UeJySjc";
+const BOT_TOKEN = "";
 
 app.enable('trust proxy');
 

@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
-const SQL_HOST = "webserver3.pebblehost.com";
-const SQL_USER = "autumnfo_admin";
-const SQL_PASS = "9p4kd%DkOw96";
-const SQL_BASE = "autumnfo_discordbot";
+const SQL_HOST = "";
+const SQL_USER = ""
+const SQL_PASS = "";
+const SQL_BASE = "";
 
 var con = mysql.createConnection({
     host: SQL_HOST,
